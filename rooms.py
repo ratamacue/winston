@@ -19,7 +19,7 @@ class DarkRoom:
             if ("yes" in command):
                 self.haveWeLookedAround=True            
                 return Response(self, "Behind you and behind the open door there is another door. Under the crack of the door you can see light, enter the door? (Yes/No)")
-            return Response(self, "The room is light and there are people,")
+            return Response(self, 'A sign ahead of you reads "look behind you" \n Look behind you? (Yes/No)')
         if ("look around" in command):
             return Response(self, "You look around and notice, the room is dark..")
         if ("look down" in command):
@@ -31,7 +31,7 @@ class DarkRoom:
 
 class Response:
     room = Outside()    
-    text = "This text shoul never show up."
+    text = "This text should never show up."
     def __init__(self, room, text):
         self.room = room
         self.text = text    
