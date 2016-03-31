@@ -1,6 +1,18 @@
 class BaseRoom:
+    havewelookedaround = False
+    dialogue1 = False
     def message(self, command):
+        if (self.dialogue1 == True):
+            return Response(self, 'Masked man: Would you like some help?')
+        if("look around" in command):
+            self.havewelookedaround = True
+            return Response(self, "There is a tall skinny man with a mask on.")
+        if (self.havewelookedaround == True):
+            self.dialogue1 = True
+            return Response(self, "Masked man: Are you lost?")
         return Response(self, "You have reached the base.")
+        
+
 
 class Outside:
     def message(self, command):
@@ -16,6 +28,7 @@ class DarkRoom:
             if(self.haveWeLookedAround):
                 if("yes" in command):
                     return Response(BaseRoom(),"The room is light and there are people,")
+                return Response(self, "Under the crack of the door you can see light, enter the door? (Yes/No)")
             if ("yes" in command):
                 self.haveWeLookedAround=True            
                 return Response(self, "Behind you and behind the open door there is another door. Under the crack of the door you can see light, enter the door? (Yes/No)")

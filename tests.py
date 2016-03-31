@@ -42,4 +42,12 @@ class TestStringMethods(unittest.TestCase):
   def testBaseRoomHappyPath(self):
       response = BaseRoom().message("")
       self.assertEqual(response.getText(), 'You have reached the base.')
+
+      response = response.getRoom().message("look around")
+      self.assertEqual(response.getText(), 'There is a tall skinny man with a mask on.')
       
+      response = response.getRoom().message("fdkdfwsj")
+      self.assertEqual(response.getText(), 'Masked man: Are you lost?')
+
+      response = response.getRoom().message("dfuskjfhadsy")
+      self.assertEqual(response.getText(), 'Masked man: Would you like some help?')
