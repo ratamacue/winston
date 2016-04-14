@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from rooms import *
+import textwrap
 
 class Game:
     room=Outside()    
@@ -11,7 +12,7 @@ class Game:
         
     def prompt(self):
         command = raw_input("> ")
-        print self.processCommand(command)
+        print textwrap.fill(self.processCommand(command),80, subsequent_indent='    ', initial_indent='    ',)
      
 game = Game()
 print "Welcome!"

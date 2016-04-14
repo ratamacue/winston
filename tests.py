@@ -1,6 +1,9 @@
 import unittest
 from rooms import *
 
+
+# python -m unittest -v tests
+
 class TestStringMethods(unittest.TestCase):
 
   def test_isupper(self):
@@ -9,16 +12,16 @@ class TestStringMethods(unittest.TestCase):
   
   def testDarkRoomHappyPath(self):
       response = DarkRoom().message("")
-      self.assertEqual(response.getText(), 'The Door Is Open')
+      self.assertEqual(response.getText(), 'The door is open.')
 
       response = response.getRoom().message("look around")
       self.assertEqual(response.getText(), 'You look around and notice, the room is dark..')
 
       response = response.getRoom().message("yes")
-      self.assertEqual(response.getText(), 'The Door Is Open')
+      self.assertEqual(response.getText(), 'The door is open')
 
       response = response.getRoom().message("look down")
-      self.assertEqual(response.getText(), 'You see a box of matches on your belt.')
+      self.assertEqual(response.getText(), 'You see a box of matches on the stone floor, you picked up the matches (Hint: "light _____")')
       
       response = response.getRoom().message("light match")
       self.assertEqual(response.getText(), 'The match lights up for 5 seconds, in that time a sign ahead of you reads "look behind you" \n Look behind you? (Yes/No)')
@@ -47,7 +50,14 @@ class TestStringMethods(unittest.TestCase):
       self.assertEqual(response.getText(), 'There is a tall skinny man with a mask on.')
       
       response = response.getRoom().message("fdkdfwsj")
-      self.assertEqual(response.getText(), 'Masked man: Are you lost?')
+      self.assertEqual(response.getText(), 'Masked Man: Are you lost?')
 
       response = response.getRoom().message("dfuskjfhadsy")
-      self.assertEqual(response.getText(), 'Masked man: Would you like some help?')
+      self.assertEqual(response.getText(), 'Masked Man: Would you like some help?')
+
+      response = response.getRoom().message("fdkdfwsj")
+      self.assertEqual(response.getText(), 'Masked Man: Do you know what you\'re doing? (Yes/No)')
+
+      response = response.getRoom().message("no")
+      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" \n(Use look around too see sorroundings from left to right) ... Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you \n(type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! ')
+
