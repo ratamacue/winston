@@ -59,7 +59,7 @@ class TestStringMethods(unittest.TestCase):
       self.assertEqual(response.getText(), 'Masked Man: Do you know what you\'re doing? (Yes/No)')
 
       response = response.getRoom().message("no")
-      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! ')
+      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy!  And lastly, write "save" (game save name of your choice) and then type "load" (saved game)')
 
 
   def testBaseRoomNoHelp(self):
@@ -85,3 +85,5 @@ class TestStringMethods(unittest.TestCase):
   def testhahaverycleverroomnameHappyPath(self):
     response = Hahaverycleverroomname().message('')
     self.assertEqual(response.getText(), "???: Hi there!")
+    response = Hahaverycleverroomname().message('')
+    self.assertEqual(response.getText(), "???: Now, you seem to be lost.. That other guy is pretty mean huh?")

@@ -1,6 +1,11 @@
 class Hahaverycleverroomname:
+    dialogue1 = False
     def message(self, command):
-        return Response(self, "???: Hi there!")
+        if ("look around" in command):
+            self.dialogue1 = True
+            return Response(self, "???: Hi there!")
+        if (dialogue1 == True):
+            return Response(self, "???: Now, you seem to be lost.. That other guy is pretty mean huh?")
 
 
 
@@ -19,7 +24,7 @@ class BaseRoom:
     def message(self, command):
 
         if (self.yaymorecoding == True):
-            return Response(Hahaverycleverroomname(), "The masked pushed you away (Turns out he isn't very nice ;(  )")
+            return Response(Hahaverycleverroomname(), "The masked man pushed you away (Turns out he isn't very nice ;(  )")
         if (self.hahamorecleverstuff == True):
             return Response(self, 'Masked Man: Alright take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
             self.yaymorecoding = True
@@ -27,7 +32,7 @@ class BaseRoom:
             if("yes" in command):
                 return Response(Hahaverycleverroomname(), "Tutorial Guy (Your only chance to figure out how to play this game): Ok then, bye..\n I'll just go, also I'm not just a masked man I'm a generic tutorial person")
             if("no" in command):
-                return Response(self, 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! ')
+                return Response(self, 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy!  And lastly, write "save" (game save name of your choice) and then type "load" (saved game)')
                 self.hahamorecleverstuff = True
         if (self.Yes_or_no_masked == True):
             self.Insertgenerictrueorfalsehere = True
