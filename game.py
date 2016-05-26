@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from rooms import *
+from inventory import *
 import textwrap
 import sys
 import pickle
@@ -27,6 +28,7 @@ class Game:
 
         if("quit" in command):
             sys.exit("You are leaving the game.")
+
 
 
         response = self.room.message(command)

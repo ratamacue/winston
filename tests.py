@@ -1,5 +1,6 @@
 import unittest
 from rooms import *
+from inventory import *
 
 
 # python -m unittest -v tests
@@ -83,7 +84,31 @@ class TestStringMethods(unittest.TestCase):
       self.assertTrue(isinstance(response.getRoom(), Hahaverycleverroomname))
 
   def testhahaverycleverroomnameHappyPath(self):
-    response = Hahaverycleverroomname().message('')
+    response = Hahaverycleverroomname().message("Eat an apple")
+    self.assertEqual(response.getText(), "Unless you know what you're doing, or the tutorial guy helped you.  You are stuck,")
+    response = response.getRoom().message('look around')
     self.assertEqual(response.getText(), "???: Hi there!")
-    response = Hahaverycleverroomname().message('')
+
+    response = response.getRoom().message('gdfhachx')
     self.assertEqual(response.getText(), "???: Now, you seem to be lost.. That other guy is pretty mean huh?")
+
+  def testThatICanListMyInventory(self):
+      response = Inventory().message("inventory")
+      self.assertEqual(response.getText(), "You don't have anything yet.")
+
+  def testThatICanListMyInventory(self):
+      inventory = Inventory([])
+      response = inventory.message("inventory")
+      self.assertEqual(response.getText(), "You don't have anything yet.")
+
+      inventory = Inventory(["baseball"])
+      response = inventory.message("inventory")
+      self.assertEqual(response.getText(), "You have the following things in your inventory: \n * baseball")
+
+      inventory = Inventory(["baseball", "cupcake"])
+      response = inventory.message("inventory")
+      self.assertEqual(response.getText(), "You have the following things in your inventory: \n * baseball \n * cupcake")
+
+      inventory = Inventory(["baseball", "cupcake", "donkey"])
+      response = inventory.message("inventory")
+      self.assertEqual(response.getText(), "You have the following things in your inventory: \n * baseball \n * cupcake \n * donkey")

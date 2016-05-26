@@ -4,9 +4,9 @@ class Hahaverycleverroomname:
         if ("look around" in command):
             self.dialogue1 = True
             return Response(self, "???: Hi there!")
-        if (dialogue1 == True):
+        if (self.dialogue1 == True):
             return Response(self, "???: Now, you seem to be lost.. That other guy is pretty mean huh?")
-
+        return Response(self, "Unless you know what you're doing, or the tutorial guy helped you.  You are stuck,")
 
 
 
