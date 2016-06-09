@@ -3,8 +3,6 @@ from rooms import *
 from inventory import *
 
 
-# python -m unittest -v tests
-
 class TestStringMethods(unittest.TestCase):
 
   def test_isupper(self):
@@ -60,7 +58,18 @@ class TestStringMethods(unittest.TestCase):
       self.assertEqual(response.getText(), 'Masked Man: Do you know what you\'re doing? (Yes/No)')
 
       response = response.getRoom().message("no")
-      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy!  And lastly, write "save" (game save name of your choice) and then type "load" (saved game)')
+      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) .........  And lastly, write "save" (game save name of your choice) and then type "load" (saved game) .... Do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! (Yes/No)')
+
+      response1 = response.getRoom().message("no")
+      self.assertEqual(response1.getText(), "Alright, then I'll be on my way.  You'll probably be lost, AND YOU HAVE NO FRIENDS.. AND I DON'T LIKE YOU.")
+
+      response = response.getRoom().message("yes")
+      self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+
+      response = response.getRoom().message("anything")
+      self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+
+
 
 
   def testBaseRoomNoHelp(self):

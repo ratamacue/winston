@@ -9,6 +9,7 @@ import pickle
 
 class Game:
     room=Outside()
+    inventory = Inventory([])
 
     def processCommand(self, command):
 
@@ -25,14 +26,16 @@ class Game:
             except:
                 print "Either your save doesn't exist, or you went into the pickle files for some reason."
 
-
         if("quit" in command):
             sys.exit("You are leaving the game.")
 
-
+        inventoryResponse = self.inventory.message(command)
+        if(inventoryResponse.exists()):
+            return inventoryResponse.getText()
 
         response = self.room.message(command)
         self.room = response.getRoom()
+        #self.inventory = response.getInventory()
         return response.getText()
 
     def prompt(self):

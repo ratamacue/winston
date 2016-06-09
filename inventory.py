@@ -8,6 +8,7 @@ class Inventory:
                 return InventoryResponse("You don't have anything yet.")
             things = " \n * ".join(self.items)
             return InventoryResponse("You have the following things in your inventory: \n * "+things)
+        return NoInventoryReponse()
 class Item:
     nothing=[]
 
@@ -16,3 +17,11 @@ class InventoryResponse:
         self.text = text
     def getText(self):
         return self.text
+    def exists(self):
+        return True
+
+class NoInventoryReponse:
+        def getText(self):
+            return ""
+        def exists(self):
+            return False

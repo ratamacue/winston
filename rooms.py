@@ -24,16 +24,21 @@ class BaseRoom:
     def message(self, command):
 
         if (self.yaymorecoding == True):
-            return Response(Hahaverycleverroomname(), "The masked man pushed you away (Turns out he isn't very nice ;(  )")
+            return Response(Hahaverycleverroomname(), response = response.getRoom().message("yes")
+            self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+)
         if (self.hahamorecleverstuff == True):
-            return Response(self, 'Masked Man: Alright take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
-            self.yaymorecoding = True
+            if("no" in command):
+                return Response(Hahaverycleverroomname(), "Alright, then I'll be on my way.  You'll probably be lost, AND YOU HAVE NO FRIENDS.. AND I DON'T LIKE YOU.")
+            if("yes" in command):
+                self.yaymorecoding = True
+                return Response(self, 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
         if (self.Insertgenerictrueorfalsehere == True):
             if("yes" in command):
                 return Response(Hahaverycleverroomname(), "Tutorial Guy (Your only chance to figure out how to play this game): Ok then, bye..\n I'll just go, also I'm not just a masked man I'm a generic tutorial person")
             if("no" in command):
-                return Response(self, 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) ......... Now finally do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy!  And lastly, write "save" (game save name of your choice) and then type "load" (saved game)')
                 self.hahamorecleverstuff = True
+                return Response(self, 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) .........  And lastly, write "save" (game save name of your choice) and then type "load" (saved game) .... Do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! (Yes/No)')
         if (self.Yes_or_no_masked == True):
             self.Insertgenerictrueorfalsehere = True
             return Response(self, 'Masked Man: Do you know what you\'re doing? (Yes/No)')
