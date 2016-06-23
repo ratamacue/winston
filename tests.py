@@ -2,6 +2,8 @@ import unittest
 from rooms import *
 from inventory import *
 
+# python -m unittest -v tests
+
 
 class TestStringMethods(unittest.TestCase):
 
@@ -67,7 +69,7 @@ class TestStringMethods(unittest.TestCase):
       self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
 
       response = response.getRoom().message("anything")
-      self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+      #self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
 
 
 

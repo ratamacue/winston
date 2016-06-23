@@ -23,10 +23,9 @@ class BaseRoom:
     yaymorecoding = False
     def message(self, command):
 
-        if (self.yaymorecoding == True):
-            return Response(Hahaverycleverroomname(), response = response.getRoom().message("yes")
-            self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
-)
+        #if (self.yaymorecoding == True):
+            #return Response(Hahaverycleverroomname(), response = response.getRoom().message("yes")
+            #self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
         if (self.hahamorecleverstuff == True):
             if("no" in command):
                 return Response(Hahaverycleverroomname(), "Alright, then I'll be on my way.  You'll probably be lost, AND YOU HAVE NO FRIENDS.. AND I DON'T LIKE YOU.")

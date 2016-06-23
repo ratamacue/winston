@@ -6,12 +6,26 @@ import textwrap
 import sys
 import pickle
 
+class Command:
+    input=""
+    inventory= Inventory([])
+    def __init__(self, input, inventory):
+        self.input = input
+        self.inventory = inventory
+    def __str__(self):
+        return self.input
+    def inventory(self):
+        return self.inventory
+    def input(self):
+        return self.input
+
 
 class Game:
     room=Outside()
     inventory = Inventory([])
 
     def processCommand(self, command):
+        #command = Command(commandAsString, self.inventory)
 
         if(command.startswith("save")):
             gameName=command[5:]
@@ -27,7 +41,7 @@ class Game:
                 print "Either your save doesn't exist, or you went into the pickle files for some reason."
 
         if("quit" in command):
-            sys.exit("You are leaving the game.")
+            sys.exit("Quitter!\n")
 
         inventoryResponse = self.inventory.message(command)
         if(inventoryResponse.exists()):
