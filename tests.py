@@ -90,6 +90,33 @@ class TestStringMethods(unittest.TestCase):
       response = response.getRoom().message("fdkdfwsj")
       self.assertEqual(response.getText(), 'Masked Man: Do you know what you\'re doing? (Yes/No)')
 
+      response = response.getRoom().message("no")
+      self.assertEqual(response.getText(), 'Ok, here is an explanation.. typing look (Up or down) will look in that direction the, most common command you will use is "look around" (Use look around too see sorroundings from left to right) ...   Next open (Insert any object here) will open things, sorry for you getting a tutorial now.. It took probably 30 minutes to figure out how to open a door, now finally try typing "inventory" to see what you have on you (type use, info, or remove to interact with your items) .........  And lastly, write "save" (game save name of your choice) and then type "load" (saved game) .... Do you want me to take you to the market? They have different stores for potions, all of the generic RPG items you can buy! (Yes/No)')
+
+      response = response.getRoom().message("yes")
+      self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+
+      response = response.getRoom().message("")
+      self.assertEqual(response.getText(), "Unless you know what you're doing, or the tutorial guy helped you.  You are stuck,")
+
+      self.assertTrue(isinstance(response.getRoom(), Hahaverycleverroomname))
+
+  def testBaseRoomYesHelp(self):
+      response = BaseRoom().message("")
+      self.assertEqual(response.getText(), 'You have reached the base.')
+
+      response = response.getRoom().message("look around")
+      self.assertEqual(response.getText(), 'There is a tall skinny man with a mask on.')
+
+      response = response.getRoom().message("fdkdfwsj")
+      self.assertEqual(response.getText(), 'Masked Man: Are you lost?')
+
+      response = response.getRoom().message("dfuskjfhadsy")
+      self.assertEqual(response.getText(), 'Masked Man: Would you like some help?')
+
+      response = response.getRoom().message("fdkdfwsj")
+      self.assertEqual(response.getText(), 'Masked Man: Do you know what you\'re doing? (Yes/No)')
+
       response = response.getRoom().message("yes")
       self.assertEqual(response.getText(), "Tutorial Guy (Your only chance to figure out how to play this game): Ok then, bye..\n I'll just go, also I'm not just a masked man I'm a generic tutorial person")
       self.assertTrue(isinstance(response.getRoom(), Hahaverycleverroomname))
@@ -102,6 +129,18 @@ class TestStringMethods(unittest.TestCase):
 
     response = response.getRoom().message('gdfhachx')
     self.assertEqual(response.getText(), "???: Now, you seem to be lost.. That other guy is pretty mean huh?")
+
+    response = response.getRoom().message('')
+    self.assertEqual(response.getText(), "???: I guess you don't talk much, other than the no's and the yes's ...  So would you like to go to the market?  That other guy was no help, (Yes/No)")
+
+    response = response.getRoom().message('yes')
+    self.assertEqual(response.getText(), "???: Well then you're in luck,  because I am the shopkeeper..  But why am I wandering around?  Well because the shop's closed.  So that question I asked was rhetorical.")
+
+    response = response.getRoom().message('')
+    self.assertEqual(response.getText(), "???: But again!  You're in luck!  Because the shop is also an inn...  And luckily I'm a nice person so you can have one stay at the inn and when morning comes you can come to the shop with me.")
+
+    response = response.getRoom().message('')
+    self.assertEqual(response.getText(), "???:  And you're not in debt for this,  because I hate Tom Nook as much as you do.  We also don't sell any copies of Animal Crossing if that's what you were thinking.")
 
   def testThatICanListMyInventory(self):
       response = Inventory().message("inventory")

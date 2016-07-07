@@ -1,10 +1,15 @@
 class Hahaverycleverroomname:
     dialogue1 = False
+    moredialogue_yaaaaaaaaaay = False
     def message(self, command):
+        if (self.moredialogue_yaaaaaaaaaay == True):
+            self.yayevenmoredialogue = True
+            return Response(self, "???: I guess you don't talk much, other than the no's and the yes's ...  So would you like to go to the market?  That other guy was no help, (Yes/No)")
         if ("look around" in command):
             self.dialogue1 = True
             return Response(self, "???: Hi there!")
         if (self.dialogue1 == True):
+            self.moredialogue_yaaaaaaaaaay = True
             return Response(self, "???: Now, you seem to be lost.. That other guy is pretty mean huh?")
         return Response(self, "Unless you know what you're doing, or the tutorial guy helped you.  You are stuck,")
 
@@ -20,18 +25,16 @@ class BaseRoom:
     Yes_or_no_masked = False
     Insertgenerictrueorfalsehere = False
     hahamorecleverstuff = False
-    yaymorecoding = False
+    #yaymorecoding = False
     def message(self, command):
 
-        #if (self.yaymorecoding == True):
-            #return Response(Hahaverycleverroomname(), response = response.getRoom().message("yes")
-            #self.assertEqual(response.getText(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+
         if (self.hahamorecleverstuff == True):
             if("no" in command):
                 return Response(Hahaverycleverroomname(), "Alright, then I'll be on my way.  You'll probably be lost, AND YOU HAVE NO FRIENDS.. AND I DON'T LIKE YOU.")
             if("yes" in command):
-                self.yaymorecoding = True
-                return Response(self, 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
+                #self.yaymorecoding = True
+                return Response(Hahaverycleverroomname(), 'Masked Man: Alright, well I am not taking you there but it will give you directions, take a left a right, go forward, turn back, then take 2 lefts, and a right then go 1 mile forward.. And you should be able to find the shop, ok good luck!')
         if (self.Insertgenerictrueorfalsehere == True):
             if("yes" in command):
                 return Response(Hahaverycleverroomname(), "Tutorial Guy (Your only chance to figure out how to play this game): Ok then, bye..\n I'll just go, also I'm not just a masked man I'm a generic tutorial person")

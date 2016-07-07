@@ -47,6 +47,7 @@ class Game:
         if(inventoryResponse.exists()):
             return inventoryResponse.getText()
 
+        #response = self.room.message(Command(command, self.inventory))
         response = self.room.message(command)
         self.room = response.getRoom()
         #self.inventory = response.getInventory()
